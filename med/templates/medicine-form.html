@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content%}
+
+<div class="row">
+
+  <div class="col-md-7 mx-auto ">
+    <form action="" method="POST">
+
+      {% include 'fields.html' %}
+
+      <div class="card card-body">
+
+        <button type="submit" name='ADD' class="btn btn-primary btn-sm btn-block">CHANGE </button>
+
+      </div>
+
+    </form>
+
+  </div>
+  
+</div>
+
+
+{% endblock %}
