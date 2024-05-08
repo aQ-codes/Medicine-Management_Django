@@ -2,7 +2,8 @@
 
 
 body {
-    background-color: #f5f1f1;
+    background-color: #ffffff; 
+/* background-color: red; */
 }
 
 
@@ -10,19 +11,24 @@ body {
     color: #c8c5c5;
 }
 
-#total-medicines {
-    background-color: #90f1ba;
+#total-medicines  {
+    background-color: #22ffcd;
 }
 
-#orders-pending {
-    background-color: #efd487;
+
+#allopathy-medicines .card-header {
+    background-color: #72eaff;
 }
 
-#orders-pending {
-    background-color: #efd487;
+#ayurvedic-medicines .card-header {
+    background-color: #d8a5ff;
+}
+
+#homeo-medicines .card-header {
+    background-color: #ecfb67;
 }
 
 
 .card-header {
-    background-color: #90f1ba;
+    background-color: #22ffcd;
 }

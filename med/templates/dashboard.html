@@ -8,7 +8,7 @@
 
 <div class="container-fluid">
     {% comment %} row {% endcomment %}
-    <div class="row">
+    <div class="row bod">
 
         <div class="col-md-7 ">
             <h6 class="mt-3">RECENTLY ADDED </h6>
@@ -29,10 +29,10 @@
                         <td> {{medicine.category}} </td>
                         <td> {{medicine.date_created}} </td>
                         <td><a href="{% url 'update_medicine' medicine.id %}"
-                                class="btn btn-sm btn-outline-info">Update</a>
+                                class="btn btn-sm btn-outline-info ">Edit</i></a>
                         </td>
                         <td><a href="{% url 'delete_medicine' medicine.id %}"
-                                class="btn btn-sm btn-outline-secondary">Delete</a>
+                                class="btn btn-sm btn-outline-secondary px-3">Delete</a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -58,14 +58,14 @@
             <h6 class="mt-3">ADD MEDICINE </h6>
             <hr>
 
-            <form action="{% url 'create_medicine' %}" method="POST">
+            <form action="{% url 'create_medicine' %}" method="POST" class="border-3">
 
 
                 {% include 'fields.html' %}
 
                 <div class="card card-body">
 
-                    <button type="submit" name='ADD' class="btn btn-primary btn-sm btn-block">ADD </button>
+                    <button type="submit" name='ADD' class="btn btn-info btn-sm btn-block">ADD </button>
 
                 </div>
             </form>

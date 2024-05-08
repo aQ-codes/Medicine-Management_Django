@@ -71,7 +71,7 @@ def home(request):
     return render(request, 'dashboard.html', context)
 
 
-@login_required(login_url='login')
+@login_required(login_url='login') 
 def createMed(request):
     if request.method == 'POST':
         form = MedicineForm(request.POST)
@@ -88,7 +88,7 @@ def createMed(request):
 @login_required(login_url='login')
 def updateMed(request, id):
     med = Medicine.objects.get(pk=id)
-    form = MedicineForm(instance = med) 
+    form = MedicineForm(instance = med)  
 
     if request.method == 'POST':
         form = MedicineForm(request.POST, instance = med  )

@@ -43,6 +43,8 @@ searchField.addEventListener('keyup',(e)=>{
                     <td> ${item.description} </td>
                     <td> ${item.price} </td>
                     <td> ${item.date_created} </td>
+                    <td> ${item.date_created} </td>
+                    <td> ${item.date_created} </td>
                     </tr>`;
                     
                 });

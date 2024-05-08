@@ -16,15 +16,15 @@
     <div class="col-md">
         <div class="card card-body">
 
-            <div class="form-group">
-                <input type="text" id="searchField" class="form-control" placeholder='Live Search '>
-            </div>
+            {% comment %} <div class="form-group">
+                <input type="text" id="searchField" class="form-control" placeholder=' Search Medicines '>
+            </div> {% endcomment %}
             <br>
 
-            <form  action = "{% url 'list_medicine' %}" method = "get" class="form-outline" data-mdb-input-init  >
+         <form  action = "{% url 'list_medicine' %}" method = "get" class="form-outline" data-mdb-input-init  >
 
                 <input type="search" id="searchField2" class="form-control" placeholder="Search Medicines..." aria-label="Search"  name = "search"/>
-            <form>
+            <form> 
 
         </div>
 
@@ -49,8 +49,8 @@
                     <td> {{medicine.description}} </td>
                     <td> {{medicine.price}} </td>
                     <td> {{medicine.date_created}} </td>
-                    <td><a href="{% url 'update_medicine' medicine.id %}" class="btn btn-sm btn-info">Update</a></td>
-                    <td><a href="{% url 'delete_medicine' medicine.id %}" class="btn btn-sm btn-danger">Delete</a></td>
+                    <td  class='px-4'><a href="{% url 'update_medicine' medicine.id %}" class="btn btn-sm btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                    <td class='px-4'><a href="{% url 'delete_medicine' medicine.id %}" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>
                 {% endfor %}
 

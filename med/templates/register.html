@@ -16,23 +16,27 @@
 			padding: 0;
 			height: 100%;
 			background: #0adea9;
+			background: rgb(255,255,255);
+background: linear-gradient(139deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 35%, rgba(34,255,205,1) 100%);
 		}
 
 		.user_card {
 			width: 350px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: #74cfbf;
-			background: #f5f8f8;
+			/* background: #74cfbf; */
+			background: #ffffff;
+			
 			position: relative;
 			display: flex;
 			justify-content: center;
 			flex-direction: column;
-			padding: 10px;
+			padding: 25px;
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			border-radius: 5px;
+		
 
 		}
 
@@ -41,22 +45,33 @@
 		}
 
 		#form-title {
-			color: #fff;
+			font-family:cursive ;
 			color: #0adea9;
+			
 		}
 
 		.login_btn {
 			width: 100%;
 
-			background: #33ccff !important;
-
-			background: #0adea9;
+			background: #6ffdce !important;
 			color: white !important;
 		}
 
-		.login_btn:focus {
+		.login_btn:hover {
 			box-shadow: none !important;
 			outline: 0px !important;
+			background: #6efc7c !important;
+
+		}
+		.login-text{
+			color:#54ebb9;
+
+		}
+		.login-text:hover{
+			text-decoration: none;
+			color:#27ff64;
+			font-weight: bold;
+
 		}
 
 		.login_container {
@@ -64,7 +79,7 @@
 		}
 
 		.input-group-text {
-			background: #f7ba5b !important;
+			background: #50ffc5 !important;
 			color: white !important;
 			border: 0 !important;
 			border-radius: 0.25rem 0 0 0.25rem !important;
@@ -83,11 +98,20 @@
 </head>
 
 <body>
+	{% load static %}
 	<div class="container h-100">
-		<div class="d-flex justify-content-center h-100">
+		<div class="d-flex justify-content-center h-100  ">
+
+
 			<div class="user_card">
-				<div class="d-flex justify-content-center">
-					<h3 id="form-title">REGISTER ACCOUNT</h3>
+				 <div class='text-center' >
+				
+						<img src="{% static 'images/logo.png' %}" height='40' width='80' >
+						<br>
+				
+						<h2 id="form-title">Be WELL Meds</h2>
+					
+				
 				</div>
 				<div class="d-flex justify-content-center form_container">
 
@@ -147,13 +171,15 @@
 				{% endfor %}
 
 				<div class="mt-4">
-					<div class="d-flex justify-content-center links">
-						Already have an account? <a href="{% url 'login' %}" class="ml-2">Login</a>
+					<div class="d-flex justify-content-center link">
+						Already have an account? <a href="{% url 'login' %}" class="ml-2 login-text">Login</a>
 					</div>
 				</div>
 			</div>
-		</div>
+
+
 	</div>
+	{% comment %} end of container {% endcomment %}
 	<script>
 		var form_fields = document.getElementsByTagName('input')
 		form_fields[1].placeholder = 'Username..';

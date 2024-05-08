@@ -16,6 +16,11 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# import environ
+# env = environ.Env()
+# environ.Env.read_env()
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -24,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e9(e#+a3$g_$7dn!7(!l%kxcj9cmjlsbxto!&3y%!*9bsfmj0#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -78,13 +83,29 @@ WSGI_APPLICATION = 'medmng.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'django_medmng',
+#         'USER':'postgres',
+#         'PASSWORD':'password',
+#         'HOST':'localhost',
+#         'POST':'5432'
+#     }
+# }
+
+import dj_database_url
+
+DATABASES = {
+   'default':dj_database_url.parse('postgres://demo_1_nsp6_user:gZGhiP9qD1WWYy6Nq7MBIPSOe6a9stXN@dpg-cotgr9q1hbls73a7j5f0-a.ohio-postgres.render.com/demo_1_nsp6')
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -134,7 +155,7 @@ STATICFILES_DIRS = [           #new
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
+REST_FRAMEWORK = { #new
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
