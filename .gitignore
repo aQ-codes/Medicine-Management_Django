@@ -1,4 +1,4 @@
-medapi/
+#medapi/
 # Django #
 *.log
 *.pot
