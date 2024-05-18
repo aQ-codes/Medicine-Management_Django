@@ -12,9 +12,6 @@ from rest_framework.authtoken.models import Token
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
-from rest_framework.filters import SearchFilter, OrderingFilter
- 
-
 from med.forms import MedicineForm
 from .serializers import MedicineSerializer
 from med.models import Medicine
@@ -30,7 +27,6 @@ def signup(request):
         return Response("account created successfully", status=status.HTTP_201_CREATED)
     return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
 #send as form data 
-
 
 
 @csrf_exempt
@@ -78,11 +74,9 @@ def update(request, pk):
     
 
 
-
 @api_view(['DELETE'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
-@permission_classes((AllowAny,))
 def delete(request, pk):
     try:
         product = Medicine.objects.get(pk=pk)

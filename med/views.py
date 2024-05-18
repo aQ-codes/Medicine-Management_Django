@@ -28,6 +28,7 @@ def registerPage(request):
         context = {'form':form}
         return render(request, 'register.html',context)
 
+
 def loginPage(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -52,6 +53,7 @@ def logoutPage(request):
     logout(request)
     return redirect('login')
 
+
 @login_required(login_url='login')
 def home(request):  
   
@@ -65,9 +67,7 @@ def home(request):
 
     form = MedicineForm()
     context = {'medicines': medicines,'total_medicines': total_medicines, 'homeo_medicines':homeo_medicines ,'allo_medicines':allo_medicines ,'ayur_medicines':ayur_medicines, 'form':form} 
-      
 
-    
     return render(request, 'dashboard.html', context)
 
 
@@ -82,7 +82,7 @@ def createMed(request):
     else:
         form = MedicineForm()
 
-    return render(request,'medicine-form.html',{'form':form})
+    return render(request,'add.html',{'form':form})
 
 
 @login_required(login_url='login')
@@ -97,7 +97,7 @@ def updateMed(request, id):
             return redirect('/') 
         
     context ={'form':form}
-    return render(request, 'medicine-form.html', context)
+    return render(request, 'update.html', context)
 
 @login_required(login_url='login')
 def deleteMed(request, id):

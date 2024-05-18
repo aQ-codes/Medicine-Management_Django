@@ -7,7 +7,7 @@
     margin-right: 20px;
 
   }
-  .navbar{
+  {% comment %} .navbar{
     background:#22ffcd;
 
   }
@@ -20,65 +20,47 @@
     color:rgb(185, 183, 183);
     font-weight: bolder;
 
-  }
+  } {% endcomment %}
 
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-ligh ">
+<nav class="navbar navbar-expand-sm navbar-light ">
   <div class="container-fluid">
 
     <a class="navbar-brand" href="#">
-      <img src="{% static 'images/logo.png' %}" height='40' width='80' alt="">
-
-
+      <img src="{% static 'images/med_logo.png' %}" height='40' width='80' alt="">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarText">
+
       <ul class="navbar-nav me-auto">
-        <li class="nav-item active">
+
+        <li class="nav-item ">
           <a class="nav-link" href="{% url 'home' %}">Dashboard <span class="sr-only"></span></a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item ">
           <a class="nav-link" href="{% url 'list_medicine'%}">Medicines</a>
         </li>
+
       </ul>
 
-
-      {% comment %} <ul class="navbar-nav mx-auto ">
-        <li class="nav-item">
-          <div class="input-group rounded">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <span class="input-group-text border-0" id="search-addon">
-              <i class="fas fa-search"></i>
-            </span>
-          </div>
-          
-        </li>
-      </ul> {% endcomment %}
-      {% block search%}
-
-      {% endblock %}
       <ul class="navbar-nav me-5">
+
         <span class="navbar-text "> Hello {{request.user}} &nbsp&nbsp    </span>
         <a class="nav-link" href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+
       </ul>
 
-  
     </div>
-
-
-   
-
-
 
   </div>
 
-
-
-
-
-
 </nav>
+<hr>
+<div class="hr"></div>
+
+

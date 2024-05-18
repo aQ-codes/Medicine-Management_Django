@@ -1,3 +1,21 @@
-<div class="form-outline" data-mdb-input-init>
-    <input type="search" id="form1" class="form-control" placeholder="Search Medicines" aria-label="Search" />
+
+      {% comment %}   <div class="card card-body">
+
+            <div class="form-group">
+                <input type="text" id="searchField" class="form-control" placeholder=' Search Medicines '>
+            </div> 
+            <br>
+
+        
+
+        </div>{% endcomment %}
+
+<form  action = "{% url 'list_medicine' %}" method = "get" class="form-outline mb-3 col-8 mx-auto" data-mdb-input-init  >
+
+  <div class="input-group">
+      <input type="search" name="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+      <button type="submit" class="btn btn-outline-primary mx-3 rounded" data-mdb-ripple-init>Search</button>
+      <button type="submit" class="btn btn-outline-warning ml-2 rounded" data-mdb-ripple-init>Reset</button>
   </div>
+
+</form>

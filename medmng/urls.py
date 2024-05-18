@@ -20,10 +20,8 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('med.urls')),
-
-
     path('api/', include('medapi.urls')),
 
 ]
 
-handler404 = 'med.views.handling_404'
+# handler404 = 'med.views.handling_404'

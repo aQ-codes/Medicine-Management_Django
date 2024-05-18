@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-e9(e#+a3$g_$7dn!7(!l%kxcj9cmjlsbxto!&3y%!*9bsfmj0#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -90,22 +90,22 @@ WSGI_APPLICATION = 'medmng.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'django_medmng',
-#         'USER':'postgres',
-#         'PASSWORD':'password',
-#         'HOST':'localhost',
-#         'POST':'5432'
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_medmng',
+        'USER':'postgres',
+        'PASSWORD':'password',
+        'HOST':'localhost',
+        'POST':'5432'
+    }
+}
 
 import dj_database_url
 
-DATABASES = {
-   'default':dj_database_url.parse('postgres://demo_1_nsp6_user:gZGhiP9qD1WWYy6Nq7MBIPSOe6a9stXN@dpg-cotgr9q1hbls73a7j5f0-a.ohio-postgres.render.com/demo_1_nsp6')
- }
+# DATABASES = {
+#    'default':dj_database_url.parse('postgres://demo_1_nsp6_user:gZGhiP9qD1WWYy6Nq7MBIPSOe6a9stXN@dpg-cotgr9q1hbls73a7j5f0-a.ohio-postgres.render.com/demo_1_nsp6')
+#  }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

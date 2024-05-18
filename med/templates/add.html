@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content%}
+
+<div class="row">
+
+  <div class="col-md-7 mx-auto ">
+     {% comment %} Add new medicine  {% endcomment %}
+        <form action="{% url 'create_medicine' %}" method="POST" class="border-3">
+
+            {% include 'medicine-form-fields.html' %}
+
+            <div class="card card-body">
+
+                <button type="submit" name='ADD' class="btn btn-info btn-sm btn-block">ADD </button>
+
+            </div>
+        </form>
+
+
+
+  </div>
+  
+</div>
+
+
+{% endblock %}

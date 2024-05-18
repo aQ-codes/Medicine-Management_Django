@@ -4,16 +4,14 @@
 
 <br>
 <div class="row">
-    <div class="col-md-8">
-        <div class="card card=body">
+    <div class="col-md-8 mx-auto">
+        <div class="card card-body text-center">
             <p>Are you sure you want to delete '{{medicine}}'?</p>
+            
             <form action="{% url 'delete_medicine' medicine.id %}" method = "POST">
                 {% csrf_token %}
                 <a href="{% url 'home' %}" class= "btn btn-warning">Cancel</a>
-                <input class= "btn btn-danger" type="submit" name="Confirm">
-            
-            
-            
+                <input class= "btn btn-danger" type="submit" value="Confirm">
             </form>
 
         </div>

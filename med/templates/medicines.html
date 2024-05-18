@@ -2,31 +2,19 @@
 
 {% load static %}
 
-{% block search %}
-
-{% include 'search.html' %} 
-
-{% endblock %}
-
 
 
 {% block content%}
-
+<div class="container">
 <div class="row">
     <div class="col-md">
-        <div class="card card-body">
 
-            {% comment %} <div class="form-group">
-                <input type="text" id="searchField" class="form-control" placeholder=' Search Medicines '>
-            </div> {% endcomment %}
-            <br>
+        {% block search %}
 
-         <form  action = "{% url 'list_medicine' %}" method = "get" class="form-outline" data-mdb-input-init  >
+        {% include 'search.html' %} 
 
-                <input type="search" id="searchField2" class="form-control" placeholder="Search Medicines..." aria-label="Search"  name = "search"/>
-            <form> 
+        {% endblock %}
 
-        </div>
 
         <div id="list" class="card card-body">
 
@@ -37,7 +25,7 @@
                     <th>Description</th>
                     <th>Price</th>
                     <th>Date Added</th>
-                    <th>Update</th>
+                    <th>Edit</th>
                     <th>Remove</th>
                 </tr>
 
@@ -49,7 +37,7 @@
                     <td> {{medicine.description}} </td>
                     <td> {{medicine.price}} </td>
                     <td> {{medicine.date_created}} </td>
-                    <td  class='px-4'><a href="{% url 'update_medicine' medicine.id %}" class="btn btn-sm btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                    <td  class='px-2'><a href="{% url 'update_medicine' medicine.id %}" class="btn btn-sm btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                     <td class='px-4'><a href="{% url 'delete_medicine' medicine.id %}" class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>
                 {% endfor %}
@@ -82,8 +70,6 @@
     </div>
 
 </div>
-
+</div>
 <script src="{% static 'js/search.js' %}"></script>
-
-
 {% endblock %}
