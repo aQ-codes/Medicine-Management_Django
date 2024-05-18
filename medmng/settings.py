@@ -16,23 +16,25 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# import environ
-# env = environ.Env()
-# environ.Env.read_env()
-
+from environ import Env
+env = Env()
+Env.read_env()
+ENVIRONMENT = env('ENVIRONMENT',default='production') #the value inside quotes represent the ENVIRONMENT variable
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-e9(e#+a3$g_$7dn!7(!l%kxcj9cmjlsbxto!&3y%!*9bsfmj0#'
-
+SECRET_KEY = env('SECRET_KEY')
+# print(SECRET_KEY)
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if ENVIRONMENT == 'development':
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
-
 
 # Application definition
 
@@ -46,7 +48,8 @@ INSTALLED_APPS = [
     'med',
     'rest_framework',
     'rest_framework.authtoken',
-    'medapi'
+    'medapi',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -90,22 +93,17 @@ WSGI_APPLICATION = 'medmng.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django_medmng',
-        'USER':'postgres',
-        'PASSWORD':'password',
-        'HOST':'localhost',
-        'POST':'5432'
-    }
-}
-
-import dj_database_url
-
 # DATABASES = {
-#    'default':dj_database_url.parse('postgres://demo_1_nsp6_user:gZGhiP9qD1WWYy6Nq7MBIPSOe6a9stXN@dpg-cotgr9q1hbls73a7j5f0-a.ohio-postgres.render.com/demo_1_nsp6')
-#  }
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'django_medmng',
+#         'USER':'postgres',
+#         'PASSWORD':'password',
+#         'HOST':'localhost',
+#         'POST':'5432'
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -162,4 +160,34 @@ REST_FRAMEWORK = { #new
     'DEFAULT_PERMISSION_CLASSES': (
          'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
         'rest_framework.permissions.IsAuthenticated', )
+}
+
+#AWS Database
+import dj_database_url
+
+DATABASES = {
+   'default':dj_database_url.parse(env('DATABASE_URL'))
+ }
+# print(DATABASES)
+#AWS Configuration
+
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+
+#Basic storage configuration for Amazon s3
+AWS_STORAGE_BUCKET_NAME = 'akhil-django-medmng'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_FILE_OVERWRITE = False
+
+STORAGES = {
+
+    # Media file (image) management   
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
+    
+    # CSS and JS file management
+    "staticfiles": {
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
+    },
 }
